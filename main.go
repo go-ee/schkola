@@ -1,12 +1,13 @@
 package main
 
 import (
-	"github.com/urfave/cli"
-	"github.com/eugeis/gee/lg"
 	"os"
-	"ee/schkola/app"
-	"github.com/eugeis/gee/eh/app/mongo"
-	"github.com/eugeis/gee/eh/app/memory"
+
+	"github.com/go-ee/schkola/app"
+	"github.com/go-ee/utils/eh/app/memory"
+	"github.com/go-ee/utils/eh/app/mongo"
+	"github.com/go-ee/utils/lg"
+	"github.com/urfave/cli"
 )
 
 var Log = lg.NewLogger("CGT ")

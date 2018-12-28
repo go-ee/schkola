@@ -1,16 +1,17 @@
 package app
 
 import (
-	"ee/schkola/auth"
-	"ee/schkola/finance"
-	"ee/schkola/library"
-	"ee/schkola/person"
-	"ee/schkola/student"
 	"errors"
 
-	"github.com/eugeis/gee/crypt"
-	"github.com/eugeis/gee/eh/app"
-	"github.com/eugeis/gee/net"
+	"github.com/go-ee/schkola/auth"
+	"github.com/go-ee/schkola/finance"
+	"github.com/go-ee/schkola/library"
+	"github.com/go-ee/schkola/person"
+	"github.com/go-ee/schkola/student"
+
+	"github.com/go-ee/utils/crypt"
+	"github.com/go-ee/utils/eh/app"
+	"github.com/go-ee/utils/net"
 	"github.com/looplab/eventhorizon"
 )
 
