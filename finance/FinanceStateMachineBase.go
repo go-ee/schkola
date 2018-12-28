@@ -1,8 +1,6 @@
 package finance
 
 import (
-    "errors"
-    "fmt"
     "github.com/looplab/eventhorizon"
 )
 type ExpenseInitialHandler struct {

@@ -1,8 +1,6 @@
 package person
 
 import (
-    "errors"
-    "fmt"
     "github.com/looplab/eventhorizon"
 )
 type ChurchInitialHandler struct {

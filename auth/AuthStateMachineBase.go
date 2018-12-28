@@ -7,7 +7,6 @@ import (
     "github.com/looplab/eventhorizon"
 )
 type AccountConfirmationDisabledHandler struct {
-    EnabledHandler func (*AccountEnabled, eventhorizon.Entity) (err error)  `json:"enabledHandler" eh:"optional"`
 }
 
 func NewAccountConfirmationDisabledHandler() (ret *AccountConfirmationDisabledHandler) {
@@ -52,7 +51,6 @@ func NewAccountConfirmationDisabledExecutor() (ret *AccountConfirmationDisabledE
 
 
 type AccountConfirmationEnabledHandler struct {
-    DisabledHandler func (*AccountDisabled, eventhorizon.Entity) (err error)  `json:"disabledHandler" eh:"optional"`
 }
 
 func NewAccountConfirmationEnabledHandler() (ret *AccountConfirmationEnabledHandler) {
@@ -97,8 +95,6 @@ func NewAccountConfirmationEnabledExecutor() (ret *AccountConfirmationEnabledExe
 
 
 type AccountConfirmationInitialHandler struct {
-    CreatedHandler func (*AccountCreated, eventhorizon.Entity) (err error)  `json:"createdHandler" eh:"optional"`
-    CreatedHandler func (*AccountCreated, eventhorizon.Entity) (err error)  `json:"createdHandler" eh:"optional"`
 }
 
 func NewAccountConfirmationInitialHandler() (ret *AccountConfirmationInitialHandler) {
@@ -236,7 +232,6 @@ func NewAccountDeletedExecutor() (ret *AccountDeletedExecutor) {
 
 
 type AccountDisabledHandler struct {
-    EnabledHandler func (*AccountEnabled, eventhorizon.Entity) (err error)  `json:"enabledHandler" eh:"optional"`
 }
 
 func NewAccountDisabledHandler() (ret *AccountDisabledHandler) {
@@ -281,7 +276,6 @@ func NewAccountDisabledExecutor() (ret *AccountDisabledExecutor) {
 
 
 type AccountEnabledHandler struct {
-    DisabledHandler func (*AccountDisabled, eventhorizon.Entity) (err error)  `json:"disabledHandler" eh:"optional"`
 }
 
 func NewAccountEnabledHandler() (ret *AccountEnabledHandler) {
@@ -326,8 +320,6 @@ func NewAccountEnabledExecutor() (ret *AccountEnabledExecutor) {
 
 
 type AccountExistHandler struct {
-    UpdatedHandler func (*AccountUpdated, eventhorizon.Entity) (err error)  `json:"updatedHandler" eh:"optional"`
-    DeletedHandler func (*AccountDeleted, eventhorizon.Entity) (err error)  `json:"deletedHandler" eh:"optional"`
 }
 
 func NewAccountExistHandler() (ret *AccountExistHandler) {
@@ -393,8 +385,6 @@ func NewAccountExistExecutor() (ret *AccountExistExecutor) {
 
 
 type AccountInitialHandler struct {
-    CreatedHandler func (*AccountCreated, eventhorizon.Entity) (err error)  `json:"createdHandler" eh:"optional"`
-    CreatedHandler func (*AccountCreated, eventhorizon.Entity) (err error)  `json:"createdHandler" eh:"optional"`
 }
 
 func NewAccountInitialHandler() (ret *AccountInitialHandler) {

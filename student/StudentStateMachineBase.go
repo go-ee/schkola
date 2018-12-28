@@ -1,8 +1,6 @@
 package student
 
 import (
-    "errors"
-    "fmt"
     "github.com/looplab/eventhorizon"
 )
 type AttendanceInitialHandler struct {

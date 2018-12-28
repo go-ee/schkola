@@ -1,8 +1,6 @@
 package library
 
 import (
-    "errors"
-    "fmt"
     "github.com/looplab/eventhorizon"
 )
 type BookInitialHandler struct {

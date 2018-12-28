@@ -2,7 +2,8 @@ package person
 
 import (
 	"strings"
-	"ee/schkola/shared"
+
+	"github.com/go-ee/schkola/shared"
 )
 
 func (o *genders) ParseGenderGerman(name string, defaultValue *Gender) (ret *Gender, ok bool) {
