@@ -1,7 +1,7 @@
 package library
 
 import (
-    "github.com/go-ee/schkola/shared"
+    "github.com/go-ee/schkola/person"
     "github.com/go-ee/utils/eh"
     "github.com/looplab/eventhorizon"
     "time"
@@ -14,7 +14,7 @@ type Book struct {
     ReleaseDate *time.Time `json:"releaseDate" eh:"optional"`
     Edition string `json:"edition" eh:"optional"`
     Category string `json:"category" eh:"optional"`
-    Author *shared.PersonName `json:"author" eh:"optional"`
+    Author *person.PersonName `json:"author" eh:"optional"`
     Location *Location `json:"location" eh:"optional"`
     Id eventhorizon.UUID `json:"id" eh:"optional"`
 }

@@ -1,7 +1,6 @@
 package person
 
 import (
-    "github.com/go-ee/schkola/shared"
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
@@ -36,7 +35,7 @@ const (
 type CreateChurch struct {
     Name string `json:"name" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
-    Pastor *shared.PersonName `json:"pastor" eh:"optional"`
+    Pastor *PersonName `json:"pastor" eh:"optional"`
     Contact *Contact `json:"contact" eh:"optional"`
     Association string `json:"association" eh:"optional"`
     Id eventhorizon.UUID `json:"id" eh:"optional"`
@@ -61,7 +60,7 @@ func (o *DeleteChurch) CommandType() eventhorizon.CommandType      { return Dele
 type UpdateChurch struct {
     Name string `json:"name" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
-    Pastor *shared.PersonName `json:"pastor" eh:"optional"`
+    Pastor *PersonName `json:"pastor" eh:"optional"`
     Contact *Contact `json:"contact" eh:"optional"`
     Association string `json:"association" eh:"optional"`
     Id eventhorizon.UUID `json:"id" eh:"optional"`
@@ -109,7 +108,7 @@ func (o *UpdateGraduation) CommandType() eventhorizon.CommandType      { return 
         
 type CreateProfile struct {
     Gender *Gender `json:"gender" eh:"optional"`
-    Name *shared.PersonName `json:"name" eh:"optional"`
+    Name *PersonName `json:"name" eh:"optional"`
     BirthName string `json:"birthName" eh:"optional"`
     Birthday *time.Time `json:"birthday" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
@@ -140,7 +139,7 @@ func (o *DeleteProfile) CommandType() eventhorizon.CommandType      { return Del
         
 type UpdateProfile struct {
     Gender *Gender `json:"gender" eh:"optional"`
-    Name *shared.PersonName `json:"name" eh:"optional"`
+    Name *PersonName `json:"name" eh:"optional"`
     BirthName string `json:"birthName" eh:"optional"`
     Birthday *time.Time `json:"birthday" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`

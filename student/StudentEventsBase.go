@@ -2,7 +2,6 @@ package student
 
 import (
     "github.com/go-ee/schkola/person"
-    "github.com/go-ee/schkola/shared"
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
@@ -105,7 +104,7 @@ type CourseCreated struct {
     Name string `json:"name" eh:"optional"`
     Begin *time.Time `json:"begin" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
-    Teacher *shared.PersonName `json:"teacher" eh:"optional"`
+    Teacher *person.PersonName `json:"teacher" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
@@ -122,7 +121,7 @@ type CourseUpdated struct {
     Name string `json:"name" eh:"optional"`
     Begin *time.Time `json:"begin" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
-    Teacher *shared.PersonName `json:"teacher" eh:"optional"`
+    Teacher *person.PersonName `json:"teacher" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
@@ -202,7 +201,7 @@ func (o *GroupUpdated) AddToCourses(item *Course) *Course {
 
 type SchoolApplicationCreated struct {
     Profile *person.Profile `json:"profile" eh:"optional"`
-    ChurchContactPerson *shared.PersonName `json:"churchContactPerson" eh:"optional"`
+    ChurchContactPerson *person.PersonName `json:"churchContactPerson" eh:"optional"`
     ChurchContact *person.Contact `json:"churchContact" eh:"optional"`
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
@@ -218,7 +217,7 @@ type SchoolApplicationDeleted struct {
 
 type SchoolApplicationUpdated struct {
     Profile *person.Profile `json:"profile" eh:"optional"`
-    ChurchContactPerson *shared.PersonName `json:"churchContactPerson" eh:"optional"`
+    ChurchContactPerson *person.PersonName `json:"churchContactPerson" eh:"optional"`
     ChurchContact *person.Contact `json:"churchContact" eh:"optional"`
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`

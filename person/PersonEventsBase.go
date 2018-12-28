@@ -1,7 +1,6 @@
 package person
 
 import (
-    "github.com/go-ee/schkola/shared"
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
@@ -35,7 +34,7 @@ const (
 type ChurchCreated struct {
     Name string `json:"name" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
-    Pastor *shared.PersonName `json:"pastor" eh:"optional"`
+    Pastor *PersonName `json:"pastor" eh:"optional"`
     Contact *Contact `json:"contact" eh:"optional"`
     Association string `json:"association" eh:"optional"`
     Id eventhorizon.UUID `json:"id" eh:"optional"`
@@ -50,7 +49,7 @@ type ChurchDeleted struct {
 type ChurchUpdated struct {
     Name string `json:"name" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
-    Pastor *shared.PersonName `json:"pastor" eh:"optional"`
+    Pastor *PersonName `json:"pastor" eh:"optional"`
     Contact *Contact `json:"contact" eh:"optional"`
     Association string `json:"association" eh:"optional"`
     Id eventhorizon.UUID `json:"id" eh:"optional"`
@@ -78,7 +77,7 @@ type GraduationUpdated struct {
 
 type ProfileCreated struct {
     Gender *Gender `json:"gender" eh:"optional"`
-    Name *shared.PersonName `json:"name" eh:"optional"`
+    Name *PersonName `json:"name" eh:"optional"`
     BirthName string `json:"birthName" eh:"optional"`
     Birthday *time.Time `json:"birthday" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
@@ -99,7 +98,7 @@ type ProfileDeleted struct {
 
 type ProfileUpdated struct {
     Gender *Gender `json:"gender" eh:"optional"`
-    Name *shared.PersonName `json:"name" eh:"optional"`
+    Name *PersonName `json:"name" eh:"optional"`
     BirthName string `json:"birthName" eh:"optional"`
     Birthday *time.Time `json:"birthday" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`

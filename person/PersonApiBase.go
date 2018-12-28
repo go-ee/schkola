@@ -1,7 +1,6 @@
 package person
 
 import (
-    "github.com/go-ee/schkola/shared"
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/eh"
@@ -14,7 +13,7 @@ import (
 type Church struct {
     Name string `json:"name" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
-    Pastor *shared.PersonName `json:"pastor" eh:"optional"`
+    Pastor *PersonName `json:"pastor" eh:"optional"`
     Contact *Contact `json:"contact" eh:"optional"`
     Association string `json:"association" eh:"optional"`
     Id eventhorizon.UUID `json:"id" eh:"optional"`
@@ -46,7 +45,7 @@ func (o *Graduation) EntityID() eventhorizon.UUID { return o.Id }
         
 type Profile struct {
     Gender *Gender `json:"gender" eh:"optional"`
-    Name *shared.PersonName `json:"name" eh:"optional"`
+    Name *PersonName `json:"name" eh:"optional"`
     BirthName string `json:"birthName" eh:"optional"`
     Birthday *time.Time `json:"birthday" eh:"optional"`
     Address *Address `json:"address" eh:"optional"`
@@ -134,11 +133,22 @@ func NewEducation() (ret *Education) {
 type Family struct {
     MaritalState *MaritalState `json:"maritalState" eh:"optional"`
     ChildrenCount int `json:"childrenCount" eh:"optional"`
-    Partner *shared.PersonName `json:"partner" eh:"optional"`
+    Partner *PersonName `json:"partner" eh:"optional"`
 }
 
 func NewFamily() (ret *Family) {
     ret = &Family{}
+    return
+}
+
+
+type PersonName struct {
+    First string `json:"first" eh:"optional"`
+    Last string `json:"last" eh:"optional"`
+}
+
+func NewPersonName() (ret *PersonName) {
+    ret = &PersonName{}
     return
 }
 

@@ -3,7 +3,7 @@ package app
 import (
 	"errors"
 
-	"github.com/go-ee/schkola/auth"
+	"github.com/go-ee/auth"
 	"github.com/go-ee/schkola/finance"
 	"github.com/go-ee/schkola/library"
 	"github.com/go-ee/schkola/person"
