@@ -3,7 +3,7 @@ package auth
 import (
     "errors"
     "fmt"
-    "github.com/eugeis/gee/eh"
+    "github.com/go-ee/utils/eh"
     "github.com/looplab/eventhorizon"
 )
 type AccountConfirmationDisabledHandler struct {

@@ -1,7 +1,7 @@
 package finance
 
 import (
-    "ee/schkola/person"
+    "github.com/go-ee/schkola/person"
     "github.com/looplab/eventhorizon"
     "time"
 )

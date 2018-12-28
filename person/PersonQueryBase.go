@@ -2,7 +2,7 @@ package person
 
 import (
     "context"
-    "github.com/eugeis/gee/eh"
+    "github.com/go-ee/utils/eh"
     "github.com/looplab/eventhorizon"
 )
 type ChurchQueryRepository struct {

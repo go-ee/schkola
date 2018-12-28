@@ -1,8 +1,8 @@
 package library
 
 import (
-    "ee/schkola/shared"
-    "github.com/eugeis/gee/eh"
+    "github.com/go-ee/schkola/shared"
+    "github.com/go-ee/utils/eh"
     "github.com/looplab/eventhorizon"
     "time"
 )

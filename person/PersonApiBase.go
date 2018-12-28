@@ -1,11 +1,11 @@
 package person
 
 import (
-    "ee/schkola/shared"
+    "github.com/go-ee/schkola/shared"
     "encoding/json"
     "fmt"
-    "github.com/eugeis/gee/eh"
-    "github.com/eugeis/gee/enum"
+    "github.com/go-ee/utils/eh"
+    "github.com/go-ee/utils/enum"
     "github.com/looplab/eventhorizon"
     "gopkg.in/mgo.v2/bson"
     "time"

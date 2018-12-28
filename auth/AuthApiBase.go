@@ -1,8 +1,8 @@
 package auth
 
 import (
-    "ee/schkola/person"
-    "ee/schkola/shared"
+    "github.com/go-ee/schkola/person"
+    "github.com/go-ee/schkola/shared"
     "github.com/looplab/eventhorizon"
 )
         
