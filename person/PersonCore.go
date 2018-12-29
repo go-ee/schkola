@@ -3,7 +3,7 @@ package person
 import (
 	"strings"
 
-	"github.com/go-ee/schkola/shared"
+	"github.com/go-ee/auth"
 )
 
 func (o *genders) ParseGenderGerman(name string, defaultValue *Gender) (ret *Gender, ok bool) {
@@ -32,17 +32,17 @@ func (o *maritalStates) ParseMaritalStateGerman(name string, defaultValue *Marit
 	return
 }
 
-func PersonNameParse(value string) (ret *shared.PersonName, ok bool) {
+func PersonNameParse(value string) (ret *auth.PersonName, ok bool) {
 	str := strings.Trim(value, " ")
 	if len(str) > 0 {
 		ok = true
 		firstLast := strings.Split(str, " ")
 		if len(firstLast) >= 2 {
-			ret = &shared.PersonName{First: firstLast[0], Last: strings.Join(firstLast[1:], " ")}
+			ret = &auth.PersonName{First: firstLast[0], Last: strings.Join(firstLast[1:], " ")}
 		} else if len(firstLast) == 1 {
-			ret = &shared.PersonName{First: firstLast[0]}
+			ret = &auth.PersonName{First: firstLast[0]}
 		} else {
-			ret = &shared.PersonName{First: str}
+			ret = &auth.PersonName{First: str}
 		}
 	}
 	return

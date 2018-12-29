@@ -306,8 +306,12 @@ func (o *AttendanceEventType) SetBSON(raw bson.Raw) (err error) {
     return
 }
 
-func (o *AttendanceEventType) IsAttendanceRegistered() bool {
-    return o == _attendanceEventTypes.AttendanceRegistered()
+func (o *AttendanceEventType) IsAttendanceCanceled() bool {
+    return o == _attendanceEventTypes.AttendanceCanceled()
+}
+
+func (o *AttendanceEventType) IsAttendanceConfirmed() bool {
+    return o == _attendanceEventTypes.AttendanceConfirmed()
 }
 
 func (o *AttendanceEventType) IsAttendanceCreated() bool {
@@ -318,12 +322,8 @@ func (o *AttendanceEventType) IsAttendanceDeleted() bool {
     return o == _attendanceEventTypes.AttendanceDeleted()
 }
 
-func (o *AttendanceEventType) IsAttendanceConfirmed() bool {
-    return o == _attendanceEventTypes.AttendanceConfirmed()
-}
-
-func (o *AttendanceEventType) IsAttendanceCanceled() bool {
-    return o == _attendanceEventTypes.AttendanceCanceled()
+func (o *AttendanceEventType) IsAttendanceRegistered() bool {
+    return o == _attendanceEventTypes.AttendanceRegistered()
 }
 
 func (o *AttendanceEventType) IsAttendanceUpdated() bool {
@@ -336,11 +336,11 @@ type attendanceEventTypes struct {
 }
 
 var _attendanceEventTypes = &attendanceEventTypes{values: []*AttendanceEventType{
-    {name: "AttendanceRegistered", ordinal: 0},
-    {name: "AttendanceCreated", ordinal: 1},
-    {name: "AttendanceDeleted", ordinal: 2},
-    {name: "AttendanceConfirmed", ordinal: 3},
-    {name: "AttendanceCanceled", ordinal: 4},
+    {name: "AttendanceCanceled", ordinal: 0},
+    {name: "AttendanceConfirmed", ordinal: 1},
+    {name: "AttendanceCreated", ordinal: 2},
+    {name: "AttendanceDeleted", ordinal: 3},
+    {name: "AttendanceRegistered", ordinal: 4},
     {name: "AttendanceUpdated", ordinal: 5}},
 }
 
@@ -362,23 +362,23 @@ func (o *attendanceEventTypes) Literals() []enum.Literal {
 	return o.literals
 }
 
-func (o *attendanceEventTypes) AttendanceRegistered() *AttendanceEventType {
+func (o *attendanceEventTypes) AttendanceCanceled() *AttendanceEventType {
     return _attendanceEventTypes.values[0]
 }
 
-func (o *attendanceEventTypes) AttendanceCreated() *AttendanceEventType {
+func (o *attendanceEventTypes) AttendanceConfirmed() *AttendanceEventType {
     return _attendanceEventTypes.values[1]
 }
 
-func (o *attendanceEventTypes) AttendanceDeleted() *AttendanceEventType {
+func (o *attendanceEventTypes) AttendanceCreated() *AttendanceEventType {
     return _attendanceEventTypes.values[2]
 }
 
-func (o *attendanceEventTypes) AttendanceConfirmed() *AttendanceEventType {
+func (o *attendanceEventTypes) AttendanceDeleted() *AttendanceEventType {
     return _attendanceEventTypes.values[3]
 }
 
-func (o *attendanceEventTypes) AttendanceCanceled() *AttendanceEventType {
+func (o *attendanceEventTypes) AttendanceRegistered() *AttendanceEventType {
     return _attendanceEventTypes.values[4]
 }
 
