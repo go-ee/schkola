@@ -5,6 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "gopkg.in/mgo.v2/bson"
     "time"
@@ -45,9 +46,9 @@ type CreateExpense struct {
     Amount float64 `json:"amount" eh:"optional"`
     Profile *person.Profile `json:"profile" eh:"optional"`
     Date *time.Time `json:"date" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateExpense) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateExpense) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateExpense) AggregateType() eventhorizon.AggregateType  { return ExpenseAggregateType }
 func (o *CreateExpense) CommandType() eventhorizon.CommandType      { return CreateExpenseCommand }
 
@@ -55,9 +56,9 @@ func (o *CreateExpense) CommandType() eventhorizon.CommandType      { return Cre
 
         
 type DeleteExpense struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteExpense) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteExpense) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteExpense) AggregateType() eventhorizon.AggregateType  { return ExpenseAggregateType }
 func (o *DeleteExpense) CommandType() eventhorizon.CommandType      { return DeleteExpenseCommand }
 
@@ -69,9 +70,9 @@ type UpdateExpense struct {
     Amount float64 `json:"amount" eh:"optional"`
     Profile *person.Profile `json:"profile" eh:"optional"`
     Date *time.Time `json:"date" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateExpense) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateExpense) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateExpense) AggregateType() eventhorizon.AggregateType  { return ExpenseAggregateType }
 func (o *UpdateExpense) CommandType() eventhorizon.CommandType      { return UpdateExpenseCommand }
 
@@ -81,9 +82,9 @@ func (o *UpdateExpense) CommandType() eventhorizon.CommandType      { return Upd
 type CreateExpensePurpose struct {
     Name string `json:"name" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateExpensePurpose) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateExpensePurpose) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateExpensePurpose) AggregateType() eventhorizon.AggregateType  { return ExpensePurposeAggregateType }
 func (o *CreateExpensePurpose) CommandType() eventhorizon.CommandType      { return CreateExpensePurposeCommand }
 
@@ -91,9 +92,9 @@ func (o *CreateExpensePurpose) CommandType() eventhorizon.CommandType      { ret
 
         
 type DeleteExpensePurpose struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteExpensePurpose) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteExpensePurpose) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteExpensePurpose) AggregateType() eventhorizon.AggregateType  { return ExpensePurposeAggregateType }
 func (o *DeleteExpensePurpose) CommandType() eventhorizon.CommandType      { return DeleteExpensePurposeCommand }
 
@@ -103,9 +104,9 @@ func (o *DeleteExpensePurpose) CommandType() eventhorizon.CommandType      { ret
 type UpdateExpensePurpose struct {
     Name string `json:"name" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateExpensePurpose) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateExpensePurpose) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateExpensePurpose) AggregateType() eventhorizon.AggregateType  { return ExpensePurposeAggregateType }
 func (o *UpdateExpensePurpose) CommandType() eventhorizon.CommandType      { return UpdateExpensePurposeCommand }
 
@@ -117,9 +118,9 @@ type CreateFee struct {
     Amount float64 `json:"amount" eh:"optional"`
     Kind *FeeKind `json:"kind" eh:"optional"`
     Date *time.Time `json:"date" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateFee) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateFee) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateFee) AggregateType() eventhorizon.AggregateType  { return FeeAggregateType }
 func (o *CreateFee) CommandType() eventhorizon.CommandType      { return CreateFeeCommand }
 
@@ -127,9 +128,9 @@ func (o *CreateFee) CommandType() eventhorizon.CommandType      { return CreateF
 
         
 type DeleteFee struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteFee) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteFee) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteFee) AggregateType() eventhorizon.AggregateType  { return FeeAggregateType }
 func (o *DeleteFee) CommandType() eventhorizon.CommandType      { return DeleteFeeCommand }
 
@@ -141,9 +142,9 @@ type UpdateFee struct {
     Amount float64 `json:"amount" eh:"optional"`
     Kind *FeeKind `json:"kind" eh:"optional"`
     Date *time.Time `json:"date" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateFee) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateFee) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateFee) AggregateType() eventhorizon.AggregateType  { return FeeAggregateType }
 func (o *UpdateFee) CommandType() eventhorizon.CommandType      { return UpdateFeeCommand }
 
@@ -154,9 +155,9 @@ type CreateFeeKind struct {
     Name string `json:"name" eh:"optional"`
     Amount float64 `json:"amount" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateFeeKind) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateFeeKind) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateFeeKind) AggregateType() eventhorizon.AggregateType  { return FeeKindAggregateType }
 func (o *CreateFeeKind) CommandType() eventhorizon.CommandType      { return CreateFeeKindCommand }
 
@@ -164,9 +165,9 @@ func (o *CreateFeeKind) CommandType() eventhorizon.CommandType      { return Cre
 
         
 type DeleteFeeKind struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteFeeKind) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteFeeKind) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteFeeKind) AggregateType() eventhorizon.AggregateType  { return FeeKindAggregateType }
 func (o *DeleteFeeKind) CommandType() eventhorizon.CommandType      { return DeleteFeeKindCommand }
 
@@ -177,9 +178,9 @@ type UpdateFeeKind struct {
     Name string `json:"name" eh:"optional"`
     Amount float64 `json:"amount" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateFeeKind) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateFeeKind) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateFeeKind) AggregateType() eventhorizon.AggregateType  { return FeeKindAggregateType }
 func (o *UpdateFeeKind) CommandType() eventhorizon.CommandType      { return UpdateFeeKindCommand }
 

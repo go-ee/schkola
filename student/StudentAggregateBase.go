@@ -4,6 +4,7 @@ import (
     "errors"
     "fmt"
     "github.com/go-ee/utils/eh"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "github.com/looplab/eventhorizon/commandhandler/bus"
     "time"
@@ -302,7 +303,7 @@ func NewAttendanceAggregateInitializer(eventStore eventhorizon.EventStore, event
     eventHandler := &AttendanceEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewAttendance() }
     ret = &AttendanceAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(AttendanceAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(AttendanceAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         AttendanceCommandTypes().Literals(), AttendanceEventTypes().Literals(), eventHandler,
@@ -499,7 +500,7 @@ func NewCourseAggregateInitializer(eventStore eventhorizon.EventStore, eventBus 
     eventHandler := &CourseEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewCourse() }
     ret = &CourseAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(CourseAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(CourseAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         CourseCommandTypes().Literals(), CourseEventTypes().Literals(), eventHandler,
@@ -684,7 +685,7 @@ func NewGradeAggregateInitializer(eventStore eventhorizon.EventStore, eventBus e
     eventHandler := &GradeEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewGrade() }
     ret = &GradeAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(GradeAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(GradeAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         GradeCommandTypes().Literals(), GradeEventTypes().Literals(), eventHandler,
@@ -877,7 +878,7 @@ func NewGroupAggregateInitializer(eventStore eventhorizon.EventStore, eventBus e
     eventHandler := &GroupEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewGroup() }
     ret = &GroupAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(GroupAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(GroupAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         GroupCommandTypes().Literals(), GroupEventTypes().Literals(), eventHandler,
@@ -1070,7 +1071,7 @@ func NewSchoolApplicationAggregateInitializer(eventStore eventhorizon.EventStore
     eventHandler := &SchoolApplicationEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewSchoolApplication() }
     ret = &SchoolApplicationAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(SchoolApplicationAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(SchoolApplicationAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         SchoolApplicationCommandTypes().Literals(), SchoolApplicationEventTypes().Literals(), eventHandler,
@@ -1255,7 +1256,7 @@ func NewSchoolYearAggregateInitializer(eventStore eventhorizon.EventStore, event
     eventHandler := &SchoolYearEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewSchoolYear() }
     ret = &SchoolYearAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(SchoolYearAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(SchoolYearAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         SchoolYearCommandTypes().Literals(), SchoolYearEventTypes().Literals(), eventHandler,

@@ -4,6 +4,7 @@ import (
     "errors"
     "fmt"
     "github.com/go-ee/utils/eh"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "github.com/looplab/eventhorizon/commandhandler/bus"
     "time"
@@ -185,7 +186,7 @@ func NewChurchAggregateInitializer(eventStore eventhorizon.EventStore, eventBus 
     eventHandler := &ChurchEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewChurch() }
     ret = &ChurchAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(ChurchAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(ChurchAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         ChurchCommandTypes().Literals(), ChurchEventTypes().Literals(), eventHandler,
@@ -362,7 +363,7 @@ func NewGraduationAggregateInitializer(eventStore eventhorizon.EventStore, event
     eventHandler := &GraduationEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewGraduation() }
     ret = &GraduationAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(GraduationAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(GraduationAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         GraduationCommandTypes().Literals(), GraduationEventTypes().Literals(), eventHandler,
@@ -575,7 +576,7 @@ func NewProfileAggregateInitializer(eventStore eventhorizon.EventStore, eventBus
     eventHandler := &ProfileEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewProfile() }
     ret = &ProfileAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(ProfileAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(ProfileAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         ProfileCommandTypes().Literals(), ProfileEventTypes().Literals(), eventHandler,

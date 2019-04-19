@@ -12,7 +12,7 @@ import (
 	"github.com/go-ee/utils/crypt"
 	"github.com/go-ee/utils/eh/app"
 	"github.com/go-ee/utils/net"
-	"github.com/looplab/eventhorizon"
+	"github.com/google/uuid"
 )
 
 type Schkola struct {
@@ -69,7 +69,8 @@ func (o *Schkola) initJwtController(accounts *auth.AccountQueryRepository) (ret 
 	return net.NewJwtControllerApp("app",
 		func(credentials net.UserCredentials) (ret interface{}, err error) {
 			var account *auth.Account
-			if account, err = accounts.FindById(eventhorizon.UUID(credentials.Username)); err == nil {
+			id, _ := uuid.Parse(credentials.Username)
+			if account, err = accounts.FindById(id); err == nil {
 				if !crypt.HashAndEquals(credentials.Password, account.Password) {
 					err = errors.New("password mismatch")
 				} else {

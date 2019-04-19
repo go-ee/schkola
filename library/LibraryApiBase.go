@@ -3,7 +3,7 @@ package library
 import (
     "github.com/go-ee/schkola/person"
     "github.com/go-ee/utils/eh"
-    "github.com/looplab/eventhorizon"
+    "github.com/google/uuid"
     "time"
 )
         
@@ -16,7 +16,7 @@ type Book struct {
     Category string `json:"category" eh:"optional"`
     Author *person.PersonName `json:"author" eh:"optional"`
     Location *Location `json:"location" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewBook() (ret *Book) {
@@ -33,7 +33,7 @@ func (o *Book) FindByTitle(title string) (ret *Book, err error) {
     err = eh.QueryNotImplemented("findBookByTitle")
     return
 }
-func (o *Book) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Book) EntityID() uuid.UUID { return o.Id }
 
 
 

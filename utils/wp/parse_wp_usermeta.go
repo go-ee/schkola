@@ -211,8 +211,8 @@ func restImport(users1 []string, users2 []string, users3 []string,
 func restImportForGroup(userKeys []string, users map[string]map[string]interface{}, group string, client *http.Client) {
 
 	profilesUrl := "http://127.0.0.1:8080/person/profiles/"
-	profiles := make(map[eventhorizon.UUID]*person.Profile)
-	//applications := make(map[eventhorizon.UUID]*student.SchoolApplication)
+	profiles := make(map[uuid.UUID]*person.Profile)
+	//applications := make(map[uuid.UUID]*student.SchoolApplication)
 
 	for _, userKey := range userKeys {
 		user := users[userKey]
@@ -260,7 +260,7 @@ func restImportForGroup(userKeys []string, users map[string]map[string]interface
 				ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
 				SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
 				Group string `json:"group" eh:"optional"`
-				Id eventhorizon.UUID `json:"id" eh:"optional"`
+				Id uuid.UUID `json:"id" eh:"optional"`
 			}
 		*/
 		application := student.NewSchoolApplication()
@@ -334,8 +334,8 @@ func boolGerman(value interface{}) bool {
 	}
 }
 
-func UUID(value interface{}) eventhorizon.UUID {
-	return eventhorizon.UUID(strings.ToLower(str(value)))
+func UUID(value interface{}) uuid.UUID {
+	return uuid.Parse(strings.ToLower(str(value)))
 }
 
 func writeInsertInto(users1 []string, users2 []string, users3 []string,

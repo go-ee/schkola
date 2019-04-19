@@ -4,6 +4,7 @@ import (
     "errors"
     "fmt"
     "github.com/go-ee/utils/eh"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "github.com/looplab/eventhorizon/commandhandler/bus"
     "time"
@@ -181,7 +182,7 @@ func NewExpenseAggregateInitializer(eventStore eventhorizon.EventStore, eventBus
     eventHandler := &ExpenseEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewExpense() }
     ret = &ExpenseAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(ExpenseAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(ExpenseAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         ExpenseCommandTypes().Literals(), ExpenseEventTypes().Literals(), eventHandler,
@@ -358,7 +359,7 @@ func NewExpensePurposeAggregateInitializer(eventStore eventhorizon.EventStore, e
     eventHandler := &ExpensePurposeEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewExpensePurpose() }
     ret = &ExpensePurposeAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(ExpensePurposeAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(ExpensePurposeAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         ExpensePurposeCommandTypes().Literals(), ExpensePurposeEventTypes().Literals(), eventHandler,
@@ -543,7 +544,7 @@ func NewFeeAggregateInitializer(eventStore eventhorizon.EventStore, eventBus eve
     eventHandler := &FeeEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewFee() }
     ret = &FeeAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(FeeAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(FeeAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         FeeCommandTypes().Literals(), FeeEventTypes().Literals(), eventHandler,
@@ -724,7 +725,7 @@ func NewFeeKindAggregateInitializer(eventStore eventhorizon.EventStore, eventBus
     eventHandler := &FeeKindEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewFeeKind() }
     ret = &FeeKindAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(FeeKindAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(FeeKindAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         FeeKindCommandTypes().Literals(), FeeKindEventTypes().Literals(), eventHandler,

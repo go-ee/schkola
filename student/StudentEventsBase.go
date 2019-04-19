@@ -5,6 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "gopkg.in/mgo.v2/bson"
     "time"
@@ -59,7 +60,7 @@ const (
 type AttendanceRegistered struct {
     Student *person.Profile `json:"student" eh:"optional"`
     Course *Course `json:"course" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -70,22 +71,22 @@ type AttendanceCreated struct {
     Hours int `json:"hours" eh:"optional"`
     State *AttendanceState `json:"state" eh:"optional"`
     Token string `json:"token" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type AttendanceDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type AttendanceConfirmed struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type AttendanceCanceled struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -96,7 +97,7 @@ type AttendanceUpdated struct {
     Hours int `json:"hours" eh:"optional"`
     State *AttendanceState `json:"state" eh:"optional"`
     Token string `json:"token" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -108,12 +109,12 @@ type CourseCreated struct {
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type CourseDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -125,7 +126,7 @@ type CourseUpdated struct {
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -134,12 +135,12 @@ type GradeCreated struct {
     Course *Course `json:"course" eh:"optional"`
     Grade float64 `json:"grade" eh:"optional"`
     Comment string `json:"comment" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type GradeDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -148,7 +149,7 @@ type GradeUpdated struct {
     Course *Course `json:"course" eh:"optional"`
     Grade float64 `json:"grade" eh:"optional"`
     Comment string `json:"comment" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -159,7 +160,7 @@ type GroupCreated struct {
     Representative *person.Profile `json:"representative" eh:"optional"`
     Students []*person.Profile `json:"students" eh:"optional"`
     Courses []*Course `json:"courses" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *GroupCreated) AddToStudents(item *person.Profile) *person.Profile {
@@ -174,7 +175,7 @@ func (o *GroupCreated) AddToCourses(item *Course) *Course {
 
 
 type GroupDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -185,7 +186,7 @@ type GroupUpdated struct {
     Representative *person.Profile `json:"representative" eh:"optional"`
     Students []*person.Profile `json:"students" eh:"optional"`
     Courses []*Course `json:"courses" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *GroupUpdated) AddToStudents(item *person.Profile) *person.Profile {
@@ -206,12 +207,12 @@ type SchoolApplicationCreated struct {
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Group string `json:"group" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type SchoolApplicationDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -222,7 +223,7 @@ type SchoolApplicationUpdated struct {
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Group string `json:"group" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -231,7 +232,7 @@ type SchoolYearCreated struct {
     Start *time.Time `json:"start" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
     Dates []*time.Time `json:"dates" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *SchoolYearCreated) AddToDates(item *time.Time) *time.Time {
@@ -241,7 +242,7 @@ func (o *SchoolYearCreated) AddToDates(item *time.Time) *time.Time {
 
 
 type SchoolYearDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -250,7 +251,7 @@ type SchoolYearUpdated struct {
     Start *time.Time `json:"start" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
     Dates []*time.Time `json:"dates" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *SchoolYearUpdated) AddToDates(item *time.Time) *time.Time {

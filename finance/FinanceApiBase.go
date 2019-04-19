@@ -2,7 +2,7 @@ package finance
 
 import (
     "github.com/go-ee/schkola/person"
-    "github.com/looplab/eventhorizon"
+    "github.com/google/uuid"
     "time"
 )
         
@@ -11,14 +11,14 @@ type Expense struct {
     Amount float64 `json:"amount" eh:"optional"`
     Profile *person.Profile `json:"profile" eh:"optional"`
     Date *time.Time `json:"date" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewExpense() (ret *Expense) {
     ret = &Expense{}
     return
 }
-func (o *Expense) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Expense) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -26,14 +26,14 @@ func (o *Expense) EntityID() eventhorizon.UUID { return o.Id }
 type ExpensePurpose struct {
     Name string `json:"name" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewExpensePurpose() (ret *ExpensePurpose) {
     ret = &ExpensePurpose{}
     return
 }
-func (o *ExpensePurpose) EntityID() eventhorizon.UUID { return o.Id }
+func (o *ExpensePurpose) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -43,14 +43,14 @@ type Fee struct {
     Amount float64 `json:"amount" eh:"optional"`
     Kind *FeeKind `json:"kind" eh:"optional"`
     Date *time.Time `json:"date" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewFee() (ret *Fee) {
     ret = &Fee{}
     return
 }
-func (o *Fee) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Fee) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -59,14 +59,14 @@ type FeeKind struct {
     Name string `json:"name" eh:"optional"`
     Amount float64 `json:"amount" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewFeeKind() (ret *FeeKind) {
     ret = &FeeKind{}
     return
 }
-func (o *FeeKind) EntityID() eventhorizon.UUID { return o.Id }
+func (o *FeeKind) EntityID() uuid.UUID { return o.Id }
 
 
 

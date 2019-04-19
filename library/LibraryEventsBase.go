@@ -5,6 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "gopkg.in/mgo.v2/bson"
     "time"
@@ -27,12 +28,12 @@ type BookCreated struct {
     Category string `json:"category" eh:"optional"`
     Author *person.PersonName `json:"author" eh:"optional"`
     Location *Location `json:"location" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
 type BookDeleted struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 
@@ -45,7 +46,7 @@ type BookUpdated struct {
     Category string `json:"category" eh:"optional"`
     Author *person.PersonName `json:"author" eh:"optional"`
     Location *Location `json:"location" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 

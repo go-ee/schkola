@@ -4,6 +4,7 @@ import (
     "errors"
     "fmt"
     "github.com/go-ee/utils/eh"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "github.com/looplab/eventhorizon/commandhandler/bus"
     "time"
@@ -197,7 +198,7 @@ func NewBookAggregateInitializer(eventStore eventhorizon.EventStore, eventBus ev
     eventHandler := &BookEventHandler{}
     entityFactory := func() eventhorizon.Entity { return NewBook() }
     ret = &BookAggregateInitializer{AggregateInitializer: eh.NewAggregateInitializer(BookAggregateType,
-        func(id eventhorizon.UUID) eventhorizon.Aggregate {
+        func(id uuid.UUID) eventhorizon.Aggregate {
             return eh.NewAggregateBase(BookAggregateType, id, commandHandler, eventHandler, entityFactory())
         }, entityFactory,
         BookCommandTypes().Literals(), BookEventTypes().Literals(), eventHandler,

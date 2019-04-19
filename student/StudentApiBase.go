@@ -5,7 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
-    "github.com/looplab/eventhorizon"
+    "github.com/google/uuid"
     "gopkg.in/mgo.v2/bson"
     "time"
 )
@@ -17,14 +17,14 @@ type Attendance struct {
     Hours int `json:"hours" eh:"optional"`
     State *AttendanceState `json:"state" eh:"optional"`
     Token string `json:"token" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewAttendance() (ret *Attendance) {
     ret = &Attendance{}
     return
 }
-func (o *Attendance) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Attendance) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -37,14 +37,14 @@ type Course struct {
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewCourse() (ret *Course) {
     ret = &Course{}
     return
 }
-func (o *Course) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Course) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -54,14 +54,14 @@ type Grade struct {
     Course *Course `json:"course" eh:"optional"`
     Grade float64 `json:"grade" eh:"optional"`
     Comment string `json:"comment" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewGrade() (ret *Grade) {
     ret = &Grade{}
     return
 }
-func (o *Grade) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Grade) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -73,7 +73,7 @@ type Group struct {
     Representative *person.Profile `json:"representative" eh:"optional"`
     Students []*person.Profile `json:"students" eh:"optional"`
     Courses []*Course `json:"courses" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewGroup() (ret *Group) {
@@ -90,7 +90,7 @@ func (o *Group) AddToCourses(item *Course) *Course {
     o.Courses = append(o.Courses, item)
     return item
 }
-func (o *Group) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Group) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -102,14 +102,14 @@ type SchoolApplication struct {
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Group string `json:"group" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewSchoolApplication() (ret *SchoolApplication) {
     ret = &SchoolApplication{}
     return
 }
-func (o *SchoolApplication) EntityID() eventhorizon.UUID { return o.Id }
+func (o *SchoolApplication) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -119,7 +119,7 @@ type SchoolYear struct {
     Start *time.Time `json:"start" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
     Dates []*time.Time `json:"dates" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewSchoolYear() (ret *SchoolYear) {
@@ -131,7 +131,7 @@ func (o *SchoolYear) AddToDates(item *time.Time) *time.Time {
     o.Dates = append(o.Dates, item)
     return item
 }
-func (o *SchoolYear) EntityID() eventhorizon.UUID { return o.Id }
+func (o *SchoolYear) EntityID() uuid.UUID { return o.Id }
 
 
 

@@ -4,6 +4,7 @@ import (
     "context"
     "github.com/go-ee/utils/eh"
     "github.com/go-ee/utils/net"
+    "github.com/google/uuid"
     "github.com/gorilla/mux"
     "github.com/looplab/eventhorizon"
     "github.com/looplab/eventhorizon/commandhandler/bus"
@@ -30,7 +31,7 @@ func (o *ExpenseHttpQueryHandler) FindAll(w http.ResponseWriter, r *http.Request
 
 func (o *ExpenseHttpQueryHandler) FindById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.FindById(id)
     o.HandleResult(ret, err, "FindByExpenseId", w, r)
 }
@@ -42,7 +43,7 @@ func (o *ExpenseHttpQueryHandler) CountAll(w http.ResponseWriter, r *http.Reques
 
 func (o *ExpenseHttpQueryHandler) CountById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.CountById(id)
     o.HandleResult(ret, err, "CountByExpenseId", w, r)
 }
@@ -54,7 +55,7 @@ func (o *ExpenseHttpQueryHandler) ExistAll(w http.ResponseWriter, r *http.Reques
 
 func (o *ExpenseHttpQueryHandler) ExistById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.ExistById(id)
     o.HandleResult(ret, err, "ExistByExpenseId", w, r)
 }
@@ -74,19 +75,19 @@ func NewExpenseHttpCommandHandler(context context.Context, commandBus eventhoriz
 
 func (o *ExpenseHttpCommandHandler) Create(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&CreateExpense{Id: id}, w, r)
 }
 
 func (o *ExpenseHttpCommandHandler) Update(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&UpdateExpense{Id: id}, w, r)
 }
 
 func (o *ExpenseHttpCommandHandler) Delete(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&DeleteExpense{Id: id}, w, r)
 }
 
@@ -162,7 +163,7 @@ func (o *ExpensePurposeHttpQueryHandler) FindAll(w http.ResponseWriter, r *http.
 
 func (o *ExpensePurposeHttpQueryHandler) FindById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.FindById(id)
     o.HandleResult(ret, err, "FindByExpensePurposeId", w, r)
 }
@@ -174,7 +175,7 @@ func (o *ExpensePurposeHttpQueryHandler) CountAll(w http.ResponseWriter, r *http
 
 func (o *ExpensePurposeHttpQueryHandler) CountById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.CountById(id)
     o.HandleResult(ret, err, "CountByExpensePurposeId", w, r)
 }
@@ -186,7 +187,7 @@ func (o *ExpensePurposeHttpQueryHandler) ExistAll(w http.ResponseWriter, r *http
 
 func (o *ExpensePurposeHttpQueryHandler) ExistById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.ExistById(id)
     o.HandleResult(ret, err, "ExistByExpensePurposeId", w, r)
 }
@@ -206,19 +207,19 @@ func NewExpensePurposeHttpCommandHandler(context context.Context, commandBus eve
 
 func (o *ExpensePurposeHttpCommandHandler) Create(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&CreateExpensePurpose{Id: id}, w, r)
 }
 
 func (o *ExpensePurposeHttpCommandHandler) Update(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&UpdateExpensePurpose{Id: id}, w, r)
 }
 
 func (o *ExpensePurposeHttpCommandHandler) Delete(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&DeleteExpensePurpose{Id: id}, w, r)
 }
 
@@ -294,7 +295,7 @@ func (o *FeeHttpQueryHandler) FindAll(w http.ResponseWriter, r *http.Request) {
 
 func (o *FeeHttpQueryHandler) FindById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.FindById(id)
     o.HandleResult(ret, err, "FindByFeeId", w, r)
 }
@@ -306,7 +307,7 @@ func (o *FeeHttpQueryHandler) CountAll(w http.ResponseWriter, r *http.Request) {
 
 func (o *FeeHttpQueryHandler) CountById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.CountById(id)
     o.HandleResult(ret, err, "CountByFeeId", w, r)
 }
@@ -318,7 +319,7 @@ func (o *FeeHttpQueryHandler) ExistAll(w http.ResponseWriter, r *http.Request) {
 
 func (o *FeeHttpQueryHandler) ExistById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.ExistById(id)
     o.HandleResult(ret, err, "ExistByFeeId", w, r)
 }
@@ -338,19 +339,19 @@ func NewFeeHttpCommandHandler(context context.Context, commandBus eventhorizon.C
 
 func (o *FeeHttpCommandHandler) Create(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&CreateFee{Id: id}, w, r)
 }
 
 func (o *FeeHttpCommandHandler) Update(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&UpdateFee{Id: id}, w, r)
 }
 
 func (o *FeeHttpCommandHandler) Delete(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&DeleteFee{Id: id}, w, r)
 }
 
@@ -426,7 +427,7 @@ func (o *FeeKindHttpQueryHandler) FindAll(w http.ResponseWriter, r *http.Request
 
 func (o *FeeKindHttpQueryHandler) FindById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.FindById(id)
     o.HandleResult(ret, err, "FindByFeeKindId", w, r)
 }
@@ -438,7 +439,7 @@ func (o *FeeKindHttpQueryHandler) CountAll(w http.ResponseWriter, r *http.Reques
 
 func (o *FeeKindHttpQueryHandler) CountById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.CountById(id)
     o.HandleResult(ret, err, "CountByFeeKindId", w, r)
 }
@@ -450,7 +451,7 @@ func (o *FeeKindHttpQueryHandler) ExistAll(w http.ResponseWriter, r *http.Reques
 
 func (o *FeeKindHttpQueryHandler) ExistById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.ExistById(id)
     o.HandleResult(ret, err, "ExistByFeeKindId", w, r)
 }
@@ -470,19 +471,19 @@ func NewFeeKindHttpCommandHandler(context context.Context, commandBus eventhoriz
 
 func (o *FeeKindHttpCommandHandler) Create(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&CreateFeeKind{Id: id}, w, r)
 }
 
 func (o *FeeKindHttpCommandHandler) Update(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&UpdateFeeKind{Id: id}, w, r)
 }
 
 func (o *FeeKindHttpCommandHandler) Delete(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&DeleteFeeKind{Id: id}, w, r)
 }
 

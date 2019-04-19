@@ -5,6 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "gopkg.in/mgo.v2/bson"
     "time"
@@ -60,9 +61,9 @@ const (
 type RegisterAttendance struct {
     Student *person.Profile `json:"student" eh:"optional"`
     Course *Course `json:"course" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *RegisterAttendance) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *RegisterAttendance) AggregateID() uuid.UUID            { return o.Id }
 func (o *RegisterAttendance) AggregateType() eventhorizon.AggregateType  { return AttendanceAggregateType }
 func (o *RegisterAttendance) CommandType() eventhorizon.CommandType      { return RegisterAttendanceCommand }
 
@@ -76,9 +77,9 @@ type CreateAttendance struct {
     Hours int `json:"hours" eh:"optional"`
     State *AttendanceState `json:"state" eh:"optional"`
     Token string `json:"token" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateAttendance) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateAttendance) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateAttendance) AggregateType() eventhorizon.AggregateType  { return AttendanceAggregateType }
 func (o *CreateAttendance) CommandType() eventhorizon.CommandType      { return CreateAttendanceCommand }
 
@@ -86,9 +87,9 @@ func (o *CreateAttendance) CommandType() eventhorizon.CommandType      { return 
 
         
 type DeleteAttendance struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteAttendance) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteAttendance) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteAttendance) AggregateType() eventhorizon.AggregateType  { return AttendanceAggregateType }
 func (o *DeleteAttendance) CommandType() eventhorizon.CommandType      { return DeleteAttendanceCommand }
 
@@ -96,9 +97,9 @@ func (o *DeleteAttendance) CommandType() eventhorizon.CommandType      { return 
 
         
 type ConfirmAttendance struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *ConfirmAttendance) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *ConfirmAttendance) AggregateID() uuid.UUID            { return o.Id }
 func (o *ConfirmAttendance) AggregateType() eventhorizon.AggregateType  { return AttendanceAggregateType }
 func (o *ConfirmAttendance) CommandType() eventhorizon.CommandType      { return ConfirmAttendanceCommand }
 
@@ -106,9 +107,9 @@ func (o *ConfirmAttendance) CommandType() eventhorizon.CommandType      { return
 
         
 type CancelAttendance struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CancelAttendance) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CancelAttendance) AggregateID() uuid.UUID            { return o.Id }
 func (o *CancelAttendance) AggregateType() eventhorizon.AggregateType  { return AttendanceAggregateType }
 func (o *CancelAttendance) CommandType() eventhorizon.CommandType      { return CancelAttendanceCommand }
 
@@ -122,9 +123,9 @@ type UpdateAttendance struct {
     Hours int `json:"hours" eh:"optional"`
     State *AttendanceState `json:"state" eh:"optional"`
     Token string `json:"token" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateAttendance) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateAttendance) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateAttendance) AggregateType() eventhorizon.AggregateType  { return AttendanceAggregateType }
 func (o *UpdateAttendance) CommandType() eventhorizon.CommandType      { return UpdateAttendanceCommand }
 
@@ -139,9 +140,9 @@ type CreateCourse struct {
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateCourse) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateCourse) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateCourse) AggregateType() eventhorizon.AggregateType  { return CourseAggregateType }
 func (o *CreateCourse) CommandType() eventhorizon.CommandType      { return CreateCourseCommand }
 
@@ -149,9 +150,9 @@ func (o *CreateCourse) CommandType() eventhorizon.CommandType      { return Crea
 
         
 type DeleteCourse struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteCourse) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteCourse) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteCourse) AggregateType() eventhorizon.AggregateType  { return CourseAggregateType }
 func (o *DeleteCourse) CommandType() eventhorizon.CommandType      { return DeleteCourseCommand }
 
@@ -166,9 +167,9 @@ type UpdateCourse struct {
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Fee float64 `json:"fee" eh:"optional"`
     Description string `json:"description" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateCourse) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateCourse) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateCourse) AggregateType() eventhorizon.AggregateType  { return CourseAggregateType }
 func (o *UpdateCourse) CommandType() eventhorizon.CommandType      { return UpdateCourseCommand }
 
@@ -180,9 +181,9 @@ type CreateGrade struct {
     Course *Course `json:"course" eh:"optional"`
     Grade float64 `json:"grade" eh:"optional"`
     Comment string `json:"comment" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateGrade) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateGrade) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateGrade) AggregateType() eventhorizon.AggregateType  { return GradeAggregateType }
 func (o *CreateGrade) CommandType() eventhorizon.CommandType      { return CreateGradeCommand }
 
@@ -190,9 +191,9 @@ func (o *CreateGrade) CommandType() eventhorizon.CommandType      { return Creat
 
         
 type DeleteGrade struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteGrade) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteGrade) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteGrade) AggregateType() eventhorizon.AggregateType  { return GradeAggregateType }
 func (o *DeleteGrade) CommandType() eventhorizon.CommandType      { return DeleteGradeCommand }
 
@@ -204,9 +205,9 @@ type UpdateGrade struct {
     Course *Course `json:"course" eh:"optional"`
     Grade float64 `json:"grade" eh:"optional"`
     Comment string `json:"comment" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateGrade) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateGrade) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateGrade) AggregateType() eventhorizon.AggregateType  { return GradeAggregateType }
 func (o *UpdateGrade) CommandType() eventhorizon.CommandType      { return UpdateGradeCommand }
 
@@ -220,7 +221,7 @@ type CreateGroup struct {
     Representative *person.Profile `json:"representative" eh:"optional"`
     Students []*person.Profile `json:"students" eh:"optional"`
     Courses []*Course `json:"courses" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *CreateGroup) AddToStudents(item *person.Profile) *person.Profile {
@@ -232,7 +233,7 @@ func (o *CreateGroup) AddToCourses(item *Course) *Course {
     o.Courses = append(o.Courses, item)
     return item
 }
-func (o *CreateGroup) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateGroup) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateGroup) AggregateType() eventhorizon.AggregateType  { return GroupAggregateType }
 func (o *CreateGroup) CommandType() eventhorizon.CommandType      { return CreateGroupCommand }
 
@@ -240,9 +241,9 @@ func (o *CreateGroup) CommandType() eventhorizon.CommandType      { return Creat
 
         
 type DeleteGroup struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteGroup) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteGroup) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteGroup) AggregateType() eventhorizon.AggregateType  { return GroupAggregateType }
 func (o *DeleteGroup) CommandType() eventhorizon.CommandType      { return DeleteGroupCommand }
 
@@ -256,7 +257,7 @@ type UpdateGroup struct {
     Representative *person.Profile `json:"representative" eh:"optional"`
     Students []*person.Profile `json:"students" eh:"optional"`
     Courses []*Course `json:"courses" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *UpdateGroup) AddToStudents(item *person.Profile) *person.Profile {
@@ -268,7 +269,7 @@ func (o *UpdateGroup) AddToCourses(item *Course) *Course {
     o.Courses = append(o.Courses, item)
     return item
 }
-func (o *UpdateGroup) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateGroup) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateGroup) AggregateType() eventhorizon.AggregateType  { return GroupAggregateType }
 func (o *UpdateGroup) CommandType() eventhorizon.CommandType      { return UpdateGroupCommand }
 
@@ -282,9 +283,9 @@ type CreateSchoolApplication struct {
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Group string `json:"group" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateSchoolApplication) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateSchoolApplication) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateSchoolApplication) AggregateType() eventhorizon.AggregateType  { return SchoolApplicationAggregateType }
 func (o *CreateSchoolApplication) CommandType() eventhorizon.CommandType      { return CreateSchoolApplicationCommand }
 
@@ -292,9 +293,9 @@ func (o *CreateSchoolApplication) CommandType() eventhorizon.CommandType      { 
 
         
 type DeleteSchoolApplication struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteSchoolApplication) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteSchoolApplication) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteSchoolApplication) AggregateType() eventhorizon.AggregateType  { return SchoolApplicationAggregateType }
 func (o *DeleteSchoolApplication) CommandType() eventhorizon.CommandType      { return DeleteSchoolApplicationCommand }
 
@@ -308,9 +309,9 @@ type UpdateSchoolApplication struct {
     ChurchCommitment bool `json:"churchCommitment" eh:"optional"`
     SchoolYear *SchoolYear `json:"schoolYear" eh:"optional"`
     Group string `json:"group" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateSchoolApplication) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateSchoolApplication) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateSchoolApplication) AggregateType() eventhorizon.AggregateType  { return SchoolApplicationAggregateType }
 func (o *UpdateSchoolApplication) CommandType() eventhorizon.CommandType      { return UpdateSchoolApplicationCommand }
 
@@ -322,14 +323,14 @@ type CreateSchoolYear struct {
     Start *time.Time `json:"start" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
     Dates []*time.Time `json:"dates" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *CreateSchoolYear) AddToDates(item *time.Time) *time.Time {
     o.Dates = append(o.Dates, item)
     return item
 }
-func (o *CreateSchoolYear) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateSchoolYear) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateSchoolYear) AggregateType() eventhorizon.AggregateType  { return SchoolYearAggregateType }
 func (o *CreateSchoolYear) CommandType() eventhorizon.CommandType      { return CreateSchoolYearCommand }
 
@@ -337,9 +338,9 @@ func (o *CreateSchoolYear) CommandType() eventhorizon.CommandType      { return 
 
         
 type DeleteSchoolYear struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteSchoolYear) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteSchoolYear) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteSchoolYear) AggregateType() eventhorizon.AggregateType  { return SchoolYearAggregateType }
 func (o *DeleteSchoolYear) CommandType() eventhorizon.CommandType      { return DeleteSchoolYearCommand }
 
@@ -351,14 +352,14 @@ type UpdateSchoolYear struct {
     Start *time.Time `json:"start" eh:"optional"`
     End *time.Time `json:"end" eh:"optional"`
     Dates []*time.Time `json:"dates" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func (o *UpdateSchoolYear) AddToDates(item *time.Time) *time.Time {
     o.Dates = append(o.Dates, item)
     return item
 }
-func (o *UpdateSchoolYear) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateSchoolYear) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateSchoolYear) AggregateType() eventhorizon.AggregateType  { return SchoolYearAggregateType }
 func (o *UpdateSchoolYear) CommandType() eventhorizon.CommandType      { return UpdateSchoolYearCommand }
 

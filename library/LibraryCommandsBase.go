@@ -5,6 +5,7 @@ import (
     "encoding/json"
     "fmt"
     "github.com/go-ee/utils/enum"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
     "gopkg.in/mgo.v2/bson"
     "time"
@@ -28,9 +29,9 @@ type CreateBook struct {
     Category string `json:"category" eh:"optional"`
     Author *person.PersonName `json:"author" eh:"optional"`
     Location *Location `json:"location" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *CreateBook) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *CreateBook) AggregateID() uuid.UUID            { return o.Id }
 func (o *CreateBook) AggregateType() eventhorizon.AggregateType  { return BookAggregateType }
 func (o *CreateBook) CommandType() eventhorizon.CommandType      { return CreateBookCommand }
 
@@ -38,9 +39,9 @@ func (o *CreateBook) CommandType() eventhorizon.CommandType      { return Create
 
         
 type DeleteBook struct {
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *DeleteBook) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *DeleteBook) AggregateID() uuid.UUID            { return o.Id }
 func (o *DeleteBook) AggregateType() eventhorizon.AggregateType  { return BookAggregateType }
 func (o *DeleteBook) CommandType() eventhorizon.CommandType      { return DeleteBookCommand }
 
@@ -56,9 +57,9 @@ type UpdateBook struct {
     Category string `json:"category" eh:"optional"`
     Author *person.PersonName `json:"author" eh:"optional"`
     Location *Location `json:"location" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
-func (o *UpdateBook) AggregateID() eventhorizon.UUID            { return o.Id }
+func (o *UpdateBook) AggregateID() uuid.UUID            { return o.Id }
 func (o *UpdateBook) AggregateType() eventhorizon.AggregateType  { return BookAggregateType }
 func (o *UpdateBook) CommandType() eventhorizon.CommandType      { return UpdateBookCommand }
 

@@ -4,6 +4,7 @@ import (
     "context"
     "github.com/go-ee/utils/eh"
     "github.com/go-ee/utils/net"
+    "github.com/google/uuid"
     "github.com/gorilla/mux"
     "github.com/looplab/eventhorizon"
     "github.com/looplab/eventhorizon/commandhandler/bus"
@@ -25,14 +26,14 @@ func NewBookHttpQueryHandler(queryRepository *BookQueryRepository) (ret *BookHtt
 
 func (o *BookHttpQueryHandler) FindByTitle(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    title := vars["title"]
+    title, _ := vars["title"]
     ret, err := o.QueryRepository.FindByTitle(title)
     o.HandleResult(ret, err, "FindByBookTitle", w, r)
 }
 
 func (o *BookHttpQueryHandler) FindByPattern(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    pattern := vars["pattern"]
+    pattern, _ := vars["pattern"]
     ret, err := o.QueryRepository.FindByPattern(pattern)
     o.HandleResult(ret, err, "FindByBookPattern", w, r)
 }
@@ -44,7 +45,7 @@ func (o *BookHttpQueryHandler) FindAll(w http.ResponseWriter, r *http.Request) {
 
 func (o *BookHttpQueryHandler) FindById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.FindById(id)
     o.HandleResult(ret, err, "FindByBookId", w, r)
 }
@@ -56,7 +57,7 @@ func (o *BookHttpQueryHandler) CountAll(w http.ResponseWriter, r *http.Request) 
 
 func (o *BookHttpQueryHandler) CountById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.CountById(id)
     o.HandleResult(ret, err, "CountByBookId", w, r)
 }
@@ -68,7 +69,7 @@ func (o *BookHttpQueryHandler) ExistAll(w http.ResponseWriter, r *http.Request) 
 
 func (o *BookHttpQueryHandler) ExistById(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     ret, err := o.QueryRepository.ExistById(id)
     o.HandleResult(ret, err, "ExistByBookId", w, r)
 }
@@ -88,19 +89,19 @@ func NewBookHttpCommandHandler(context context.Context, commandBus eventhorizon.
 
 func (o *BookHttpCommandHandler) Create(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&CreateBook{Id: id}, w, r)
 }
 
 func (o *BookHttpCommandHandler) Update(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&UpdateBook{Id: id}, w, r)
 }
 
 func (o *BookHttpCommandHandler) Delete(w http.ResponseWriter, r *http.Request) {
     vars := mux.Vars(r)
-    id := eventhorizon.UUID(vars["id"])
+    id, _ := uuid.Parse(vars["id"])
     o.HandleCommand(&DeleteBook{Id: id}, w, r)
 }
 

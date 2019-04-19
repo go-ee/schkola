@@ -2,6 +2,7 @@ package finance
 
 import (
     "context"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
 )
 type ExpenseQueryRepository struct {
@@ -28,7 +29,7 @@ func (o *ExpenseQueryRepository) FindAll() (ret []*Expense, err error) {
     return
 }
 
-func (o *ExpenseQueryRepository) FindById(id eventhorizon.UUID) (ret *Expense, err error) {
+func (o *ExpenseQueryRepository) FindById(id uuid.UUID) (ret *Expense, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Expense)
@@ -44,7 +45,7 @@ func (o *ExpenseQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *ExpenseQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *ExpenseQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Expense
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -60,7 +61,7 @@ func (o *ExpenseQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *ExpenseQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *ExpenseQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -93,7 +94,7 @@ func (o *ExpensePurposeQueryRepository) FindAll() (ret []*ExpensePurpose, err er
     return
 }
 
-func (o *ExpensePurposeQueryRepository) FindById(id eventhorizon.UUID) (ret *ExpensePurpose, err error) {
+func (o *ExpensePurposeQueryRepository) FindById(id uuid.UUID) (ret *ExpensePurpose, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*ExpensePurpose)
@@ -109,7 +110,7 @@ func (o *ExpensePurposeQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *ExpensePurposeQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *ExpensePurposeQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *ExpensePurpose
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -125,7 +126,7 @@ func (o *ExpensePurposeQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *ExpensePurposeQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *ExpensePurposeQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -158,7 +159,7 @@ func (o *FeeQueryRepository) FindAll() (ret []*Fee, err error) {
     return
 }
 
-func (o *FeeQueryRepository) FindById(id eventhorizon.UUID) (ret *Fee, err error) {
+func (o *FeeQueryRepository) FindById(id uuid.UUID) (ret *Fee, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Fee)
@@ -174,7 +175,7 @@ func (o *FeeQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *FeeQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *FeeQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Fee
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -190,7 +191,7 @@ func (o *FeeQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *FeeQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *FeeQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -223,7 +224,7 @@ func (o *FeeKindQueryRepository) FindAll() (ret []*FeeKind, err error) {
     return
 }
 
-func (o *FeeKindQueryRepository) FindById(id eventhorizon.UUID) (ret *FeeKind, err error) {
+func (o *FeeKindQueryRepository) FindById(id uuid.UUID) (ret *FeeKind, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*FeeKind)
@@ -239,7 +240,7 @@ func (o *FeeKindQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *FeeKindQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *FeeKindQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *FeeKind
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -255,7 +256,7 @@ func (o *FeeKindQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *FeeKindQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *FeeKindQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0

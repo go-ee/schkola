@@ -2,6 +2,7 @@ package student
 
 import (
     "context"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
 )
 type AttendanceQueryRepository struct {
@@ -28,7 +29,7 @@ func (o *AttendanceQueryRepository) FindAll() (ret []*Attendance, err error) {
     return
 }
 
-func (o *AttendanceQueryRepository) FindById(id eventhorizon.UUID) (ret *Attendance, err error) {
+func (o *AttendanceQueryRepository) FindById(id uuid.UUID) (ret *Attendance, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Attendance)
@@ -44,7 +45,7 @@ func (o *AttendanceQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *AttendanceQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *AttendanceQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Attendance
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -60,7 +61,7 @@ func (o *AttendanceQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *AttendanceQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *AttendanceQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -93,7 +94,7 @@ func (o *CourseQueryRepository) FindAll() (ret []*Course, err error) {
     return
 }
 
-func (o *CourseQueryRepository) FindById(id eventhorizon.UUID) (ret *Course, err error) {
+func (o *CourseQueryRepository) FindById(id uuid.UUID) (ret *Course, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Course)
@@ -109,7 +110,7 @@ func (o *CourseQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *CourseQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *CourseQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Course
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -125,7 +126,7 @@ func (o *CourseQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *CourseQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *CourseQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -158,7 +159,7 @@ func (o *GradeQueryRepository) FindAll() (ret []*Grade, err error) {
     return
 }
 
-func (o *GradeQueryRepository) FindById(id eventhorizon.UUID) (ret *Grade, err error) {
+func (o *GradeQueryRepository) FindById(id uuid.UUID) (ret *Grade, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Grade)
@@ -174,7 +175,7 @@ func (o *GradeQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *GradeQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *GradeQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Grade
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -190,7 +191,7 @@ func (o *GradeQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *GradeQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *GradeQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -223,7 +224,7 @@ func (o *GroupQueryRepository) FindAll() (ret []*Group, err error) {
     return
 }
 
-func (o *GroupQueryRepository) FindById(id eventhorizon.UUID) (ret *Group, err error) {
+func (o *GroupQueryRepository) FindById(id uuid.UUID) (ret *Group, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Group)
@@ -239,7 +240,7 @@ func (o *GroupQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *GroupQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *GroupQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Group
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -255,7 +256,7 @@ func (o *GroupQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *GroupQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *GroupQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -288,7 +289,7 @@ func (o *SchoolApplicationQueryRepository) FindAll() (ret []*SchoolApplication, 
     return
 }
 
-func (o *SchoolApplicationQueryRepository) FindById(id eventhorizon.UUID) (ret *SchoolApplication, err error) {
+func (o *SchoolApplicationQueryRepository) FindById(id uuid.UUID) (ret *SchoolApplication, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*SchoolApplication)
@@ -304,7 +305,7 @@ func (o *SchoolApplicationQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *SchoolApplicationQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *SchoolApplicationQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *SchoolApplication
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -320,7 +321,7 @@ func (o *SchoolApplicationQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *SchoolApplicationQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *SchoolApplicationQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
@@ -353,7 +354,7 @@ func (o *SchoolYearQueryRepository) FindAll() (ret []*SchoolYear, err error) {
     return
 }
 
-func (o *SchoolYearQueryRepository) FindById(id eventhorizon.UUID) (ret *SchoolYear, err error) {
+func (o *SchoolYearQueryRepository) FindById(id uuid.UUID) (ret *SchoolYear, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*SchoolYear)
@@ -369,7 +370,7 @@ func (o *SchoolYearQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *SchoolYearQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *SchoolYearQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *SchoolYear
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -385,7 +386,7 @@ func (o *SchoolYearQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *SchoolYearQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *SchoolYearQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0

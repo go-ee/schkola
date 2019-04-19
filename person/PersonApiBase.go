@@ -5,7 +5,7 @@ import (
     "fmt"
     "github.com/go-ee/utils/eh"
     "github.com/go-ee/utils/enum"
-    "github.com/looplab/eventhorizon"
+    "github.com/google/uuid"
     "gopkg.in/mgo.v2/bson"
     "time"
 )
@@ -16,14 +16,14 @@ type Church struct {
     Pastor *PersonName `json:"pastor" eh:"optional"`
     Contact *Contact `json:"contact" eh:"optional"`
     Association string `json:"association" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewChurch() (ret *Church) {
     ret = &Church{}
     return
 }
-func (o *Church) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Church) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -31,14 +31,14 @@ func (o *Church) EntityID() eventhorizon.UUID { return o.Id }
 type Graduation struct {
     Name string `json:"name" eh:"optional"`
     Level *GraduationLevel `json:"level" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewGraduation() (ret *Graduation) {
     ret = &Graduation{}
     return
 }
-func (o *Graduation) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Graduation) EntityID() uuid.UUID { return o.Id }
 
 
 
@@ -55,7 +55,7 @@ type Profile struct {
     Family *Family `json:"family" eh:"optional"`
     Church *ChurchInfo `json:"church" eh:"optional"`
     Education *Education `json:"education" eh:"optional"`
-    Id eventhorizon.UUID `json:"id" eh:"optional"`
+    Id uuid.UUID `json:"id" eh:"optional"`
 }
 
 func NewProfile() (ret *Profile) {
@@ -72,7 +72,7 @@ func (o *Profile) FindByPhone(phone string) (ret *Profile, err error) {
     err = eh.QueryNotImplemented("findProfileByPhone")
     return
 }
-func (o *Profile) EntityID() eventhorizon.UUID { return o.Id }
+func (o *Profile) EntityID() uuid.UUID { return o.Id }
 
 
 

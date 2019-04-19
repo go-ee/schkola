@@ -3,6 +3,7 @@ package library
 import (
     "context"
     "github.com/go-ee/utils/eh"
+    "github.com/google/uuid"
     "github.com/looplab/eventhorizon"
 )
 type BookQueryRepository struct {
@@ -39,7 +40,7 @@ func (o *BookQueryRepository) FindAll() (ret []*Book, err error) {
     return
 }
 
-func (o *BookQueryRepository) FindById(id eventhorizon.UUID) (ret *Book, err error) {
+func (o *BookQueryRepository) FindById(id uuid.UUID) (ret *Book, err error) {
     var result eventhorizon.Entity
 	if result, err = o.repo.Find(o.context, id); err == nil {
         ret = result.(*Book)
@@ -55,7 +56,7 @@ func (o *BookQueryRepository) CountAll() (ret int, err error) {
     return
 }
 
-func (o *BookQueryRepository) CountById(id eventhorizon.UUID) (ret int, err error) {
+func (o *BookQueryRepository) CountById(id uuid.UUID) (ret int, err error) {
     var result *Book
 	if result, err = o.FindById(id); err == nil && result != nil {
         ret = 1
@@ -71,7 +72,7 @@ func (o *BookQueryRepository) ExistAll() (ret bool, err error) {
     return
 }
 
-func (o *BookQueryRepository) ExistById(id eventhorizon.UUID) (ret bool, err error) {
+func (o *BookQueryRepository) ExistById(id uuid.UUID) (ret bool, err error) {
     var result int
 	if result, err = o.CountById(id); err == nil {
         ret = result > 0
