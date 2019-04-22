@@ -10,17 +10,17 @@ import (
 	"github.com/go-ee/utils/net"
 )
 
-type ChurchImporter struct {
+type ChurchClient struct {
 	client *http.Client
 	url    string
 }
 
-func NewChurchImporter(url string) *ChurchImporter {
-	return &ChurchImporter{client: &http.Client{},
+func NewChurchClient(url string) *ChurchClient {
+	return &ChurchClient{client: &http.Client{},
 		url: fmt.Sprintf("%v/%v", url, "person/churches")}
 }
 
-func (o *ChurchImporter) ImportJSON(fileJSON string) (err error) {
+func (o *ChurchClient) ImportJSON(fileJSON string) (err error) {
 	var churches []*Church
 	if churches, err = ReadChurchesFileJSON(fileJSON); err != nil {
 		return
@@ -30,7 +30,7 @@ func (o *ChurchImporter) ImportJSON(fileJSON string) (err error) {
 	return
 }
 
-func (o *ChurchImporter) Create(churches []*Church) (err error) {
+func (o *ChurchClient) Create(churches []*Church) (err error) {
 	for _, church := range churches {
 		net.PostById(church, church.Id, o.url, o.client)
 	}
