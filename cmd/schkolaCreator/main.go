@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/go-ee/schkola/person"
@@ -43,7 +44,7 @@ func main() {
 				file := c.String(flag_file)
 				count := c.Int(flag_count)
 
-				churches := person.BuildChurches(count)
+				churches := person.NewChurchesByPropNames(count)
 
 				eio.CreateFileJSON(churches, file)
 
@@ -69,10 +70,10 @@ func main() {
 				url := c.String(flag_url)
 				count := c.Int(flag_count)
 
-				churches := person.BuildChurches(count)
+				churches := person.NewChurchesByPropNames(count)
 
-				creator := person.NewChurchImporter(url)
-				err = creator.Create(churches)
+				client := person.NewPersonClient(url, &http.Client{})
+				err = client.ChurchClient.Create(churches)
 				return
 			},
 		},
@@ -95,8 +96,8 @@ func main() {
 				url := c.String(flag_url)
 				file := c.String(flag_file)
 
-				creator := person.NewChurchImporter(url)
-				err = creator.ImportJSON(file)
+				client := person.NewPersonClient(url, &http.Client{})
+				err = client.ChurchClient.ImportJSON(file)
 				return
 			},
 		},
