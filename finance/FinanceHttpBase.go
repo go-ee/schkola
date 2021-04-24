@@ -66,7 +66,7 @@ type ExpenseHttpCommandHandler struct {
 }
 
 func NewExpenseHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *ExpenseHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &ExpenseHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -198,7 +198,7 @@ type ExpensePurposeHttpCommandHandler struct {
 }
 
 func NewExpensePurposeHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *ExpensePurposeHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &ExpensePurposeHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -330,7 +330,7 @@ type FeeHttpCommandHandler struct {
 }
 
 func NewFeeHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *FeeHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &FeeHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -462,7 +462,7 @@ type FeeKindHttpCommandHandler struct {
 }
 
 func NewFeeKindHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *FeeKindHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &FeeKindHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }

@@ -80,7 +80,7 @@ type BookHttpCommandHandler struct {
 }
 
 func NewBookHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *BookHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &BookHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }

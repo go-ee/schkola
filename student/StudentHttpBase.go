@@ -66,7 +66,7 @@ type AttendanceHttpCommandHandler struct {
 }
 
 func NewAttendanceHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *AttendanceHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &AttendanceHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -225,7 +225,7 @@ type CourseHttpCommandHandler struct {
 }
 
 func NewCourseHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *CourseHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &CourseHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -357,7 +357,7 @@ type GradeHttpCommandHandler struct {
 }
 
 func NewGradeHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *GradeHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &GradeHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -489,7 +489,7 @@ type GroupHttpCommandHandler struct {
 }
 
 func NewGroupHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *GroupHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &GroupHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -621,7 +621,7 @@ type SchoolApplicationHttpCommandHandler struct {
 }
 
 func NewSchoolApplicationHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *SchoolApplicationHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &SchoolApplicationHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -753,7 +753,7 @@ type SchoolYearHttpCommandHandler struct {
 }
 
 func NewSchoolYearHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *SchoolYearHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &SchoolYearHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }

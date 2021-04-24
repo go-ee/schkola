@@ -66,7 +66,7 @@ type ChurchHttpCommandHandler struct {
 }
 
 func NewChurchHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *ChurchHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &ChurchHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -198,7 +198,7 @@ type GraduationHttpCommandHandler struct {
 }
 
 func NewGraduationHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *GraduationHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &GraduationHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
@@ -344,7 +344,7 @@ type ProfileHttpCommandHandler struct {
 }
 
 func NewProfileHttpCommandHandler(context context.Context, commandBus eventhorizon.CommandHandler) (ret *ProfileHttpCommandHandler) {
-    httpCommandHandler := eh.NewHttpCommandHandler(context, commandBus)
+    httpCommandHandler := eh.NewHttpCommandHandlerFull(context, commandBus)
     ret = &ProfileHttpCommandHandler{
         HttpCommandHandler: httpCommandHandler,
     }
